@@ -106,6 +106,12 @@ namespace Math_Quiz
                 // Display remaining time in Time Left label.
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
+
+                // Change color of timeLabel when 5 seconds or less
+                if (timeLeft <= 5)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
             }
             else
             {
@@ -119,6 +125,7 @@ namespace Math_Quiz
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+                timeLabel.BackColor = SystemColors.Control;
             }
         }
 
@@ -128,10 +135,10 @@ namespace Math_Quiz
         /// <returns>True if the answer is correct, false otherwise.</returns>
         private bool CheckTheAnswer()
         {
-            if ((addend1 + addend2 == sum.Value)
-                && (minuend - subtrahend == difference.Value)
-                && (multiplicand * multiplier == product.Value)
-                && (dividend / divisor == quotient.Value))
+            if (CheckAdd()
+                && CheckSubtract()
+                && CheckMultiply()
+                && CheckDivision())
                 return true;
             else
                 return false;
@@ -145,6 +152,72 @@ namespace Math_Quiz
             {
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
+        private bool CheckAdd()
+        {
+            // Check addition answer to see if correct
+            return (addend1 + addend2 == sum.Value);
+        }
+
+        private bool CheckSubtract()
+        {
+            // Check subtraction answer to see if correct
+            return (minuend - subtrahend == difference.Value);
+        }
+
+        private bool CheckMultiply()
+        {
+            // Check multiplication answer to see if correct
+            return (multiplicand * multiplier == product.Value);
+        }
+
+        private bool CheckDivision()
+        {
+            // Check division answer to see if correct
+            return (dividend / divisor == quotient.Value);
+        }
+
+        private void sumChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void differenceChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void answerChanged(object sender, EventArgs e)
+        {
+            bool beepMe = false;
+
+            // Make sure sender is a NumericUpDown box.
+            if (sender is NumericUpDown answerBox)
+            {
+                // Switch on the UpDown box name to check answer.
+                switch (answerBox.Name)
+                {
+                    case "sum":
+                        beepMe = CheckAdd();
+                        break;
+                    case "difference":
+                        beepMe = CheckSubtract();
+                        break;
+                    case "product":
+                        beepMe = CheckMultiply();
+                        break;
+                    case "quotient":
+                        beepMe = CheckDivision();
+                        break;
+                }
+
+                // If the answer is correct, beep the console.
+                if (beepMe)
+                {
+                    Console.Beep();
+                }
             }
         }
     }

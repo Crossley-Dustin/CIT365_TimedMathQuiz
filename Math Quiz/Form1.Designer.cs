@@ -63,7 +63,7 @@
             // 
             this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(268, 9);
+            this.timeLabel.Location = new System.Drawing.Point(214, 18);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(200, 30);
             this.timeLabel.TabIndex = 0;
@@ -72,7 +72,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(161, 10);
+            this.label1.Location = new System.Drawing.Point(107, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 25);
             this.label1.TabIndex = 1;
@@ -125,6 +125,7 @@
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(100, 35);
             this.sum.TabIndex = 2;
+            this.sum.ValueChanged += new System.EventHandler(this.answerChanged);
             this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // difference
@@ -134,6 +135,7 @@
             this.difference.Name = "difference";
             this.difference.Size = new System.Drawing.Size(100, 35);
             this.difference.TabIndex = 3;
+            this.difference.ValueChanged += new System.EventHandler(this.answerChanged);
             this.difference.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label3
@@ -183,6 +185,7 @@
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(100, 35);
             this.product.TabIndex = 4;
+            this.product.ValueChanged += new System.EventHandler(this.answerChanged);
             this.product.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label5
@@ -232,6 +235,7 @@
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(100, 35);
             this.quotient.TabIndex = 5;
+            this.quotient.ValueChanged += new System.EventHandler(this.answerChanged);
             this.quotient.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label10
@@ -278,7 +282,7 @@
             // 
             this.startButton.AutoSize = true;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(177, 311);
+            this.startButton.Location = new System.Drawing.Point(287, 311);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(127, 34);
             this.startButton.TabIndex = 1;
