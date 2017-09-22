@@ -58,7 +58,16 @@ namespace Math_Quiz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
+            if (CheckTheAnswer())
+            {
+                // If CheckTheAnswer() returns true,
+                // then user got answer right. Stop
+                // timer and show a MessageBox.
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!", "Congratulations!");
+                startButton.Enabled = true;
+            }
+            else if (timeLeft > 0)
             {
                 // Display remaining time in Time Left label.
                 timeLeft = timeLeft - 1;
@@ -74,6 +83,18 @@ namespace Math_Quiz
                 sum.Value = addend1 + addend2;
                 startButton.Enabled = true;
             }
+        }
+
+        /// <summary>
+        /// Check answer to see if the user got everything right.
+        /// </summary>
+        /// <returns>True if the answer is correct, false otherwise.</returns>
+        private bool CheckTheAnswer()
+        {
+            if (addend1 + addend2 == sum.Value)
+                return true;
+            else
+                return false;
         }
     }
 }
