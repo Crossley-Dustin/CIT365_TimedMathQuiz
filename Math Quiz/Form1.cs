@@ -210,7 +210,7 @@ namespace Math_Quiz
                         break;
                 }
 
-                // If the answer is correct, beep the console.
+                // If the answer is correct and the timer is running, beep the console.
                 if (beepMe && clockRunning)
                 {
                     Console.Beep();
