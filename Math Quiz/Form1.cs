@@ -37,6 +37,9 @@ namespace Math_Quiz
         public Form1()
         {
             InitializeComponent();
+            
+            // Set date label.
+            dateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
         }
 
         /// <summary>
@@ -55,6 +58,9 @@ namespace Math_Quiz
 
             // Initialize sum value.
             sum.Value = 0;
+
+            // Reset timer color.
+            timeLabel.BackColor = SystemColors.Control;
 
             // Fill in the subtraction problem.
             minuend = randomizer.Next(1, 101);
@@ -178,20 +184,11 @@ namespace Math_Quiz
             // Check division answer to see if correct
             return (dividend / divisor == quotient.Value);
         }
-
-        private void sumChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void differenceChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void answerChanged(object sender, EventArgs e)
         {
             bool beepMe = false;
+            bool clockRunning = timer1.Enabled;
 
             // Make sure sender is a NumericUpDown box.
             if (sender is NumericUpDown answerBox)
@@ -214,7 +211,7 @@ namespace Math_Quiz
                 }
 
                 // If the answer is correct, beep the console.
-                if (beepMe)
+                if (beepMe && clockRunning)
                 {
                     Console.Beep();
                 }
